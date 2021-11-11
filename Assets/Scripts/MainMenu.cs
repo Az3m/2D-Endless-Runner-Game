@@ -2,22 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class MainMenu : MonoBehaviour
 {
-    public int PlayerScore;
-    public int PlayerMaxScore;
+    private int PrevSceneToLoad;
+
+    private void Update()
+    {
+        PrevSceneToLoad = SceneManager.GetActiveScene().buildIndex - 1;
+    }
     public void Play()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        PlayerPrefs.SetInt("PlayerScore", 0);
-        PlayerPrefs.SetInt("PlayerMaxScore",playerMaxScore);
-
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Replay()
+    {
+        SceneManager.LoadScene(PrevSceneToLoad);
+    }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }

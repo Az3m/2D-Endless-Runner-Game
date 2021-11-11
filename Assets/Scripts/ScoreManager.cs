@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+
 public class ScoreManager : MonoBehaviour
 {
     public Text scoreText;
     private float score;
-
-    private void Start()
-    {
-        score = PlayerPrefs.GetInt("PlayerScore");
-    }
+    
+    
+    
 
 
 
@@ -21,9 +20,10 @@ public class ScoreManager : MonoBehaviour
         if (GameObject.FindWithTag("Player") != null)
         {
             score += 1 * Time.deltaTime;
-            scoreText.text ="Your score is: "+ ((int)score).ToString();
-            PlayerPrefs.SetInt("PlayerScore", (int)score);
-            
+            scoreText.text =((int)score).ToString();
+            PlayerPrefs.SetInt("CurrentScore", (int)score);
+
         }
+         
     }
 }
