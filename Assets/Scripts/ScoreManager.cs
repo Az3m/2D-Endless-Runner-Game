@@ -8,6 +8,12 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
     private float score;
 
+    private void Start()
+    {
+        score = PlayerPrefs.GetInt("PlayerScore");
+    }
+
+
 
     // Update is called once per frame
     void Update()
@@ -15,7 +21,9 @@ public class ScoreManager : MonoBehaviour
         if (GameObject.FindWithTag("Player") != null)
         {
             score += 1 * Time.deltaTime;
-            scoreText.text = ((int)score).ToString();
+            scoreText.text ="Your score is: "+ ((int)score).ToString();
+            PlayerPrefs.SetInt("PlayerScore", (int)score);
+            
         }
     }
 }
