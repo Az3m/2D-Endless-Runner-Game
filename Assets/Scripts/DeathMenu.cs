@@ -7,11 +7,13 @@ public class DeathMenu : MonoBehaviour
 {
     public Text CurrentScore;
     public Text HighScore;
+    private ScoreManager ScoreManager;
     // Start is called before the first frame update
     void Start()
     {
-        CurrentScore.text = (PlayerPrefs.GetInt("CurrentScore")).ToString();
+        CurrentScore.text = (ScoreManager.getCurrentScore()).ToString();
         HighScore.text = (PlayerPrefs.GetInt("HighScore")).ToString();
+        ScoreManager.setCurrentScore(0);
     }
 
 }
